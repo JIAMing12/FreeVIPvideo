@@ -1,0 +1,109 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 水平表单</title>
+    
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script type='text/javascript' src='http://www.jsdaima.com/Upload/1412093176/jquery-1.11.1.min.js'></script>
+    <script type='text/javascript' src='http://www.jsdaima.com/Upload/1412093176/jquery.particleground.min.js'></script>
+    <script type='text/javascript' src='http://www.jsdaima.com/Upload/1412093176/demo.js'></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.jsdaima.com/Upload/1412093176/style.css" />
+    <style>
+    </style>
+</head>
+<body>
+    <div id="particles">
+        <div class="intro">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title" style="text-align:center">免VIP去广告</h1>
+                </div>
+                <table class="table" style="color:black">
+                    <th> 本站只提供免费学习使用，从不提供任何业务</th>
+
+                    <tr><td>选择网址</td></tr>
+                    <tr>
+                        <td>
+                            <a href="http://www.iqiyi.com/" target="_blank">爱奇艺</a>&nbsp;
+                            <a href="https://v.qq.com/" target="_blank">腾讯视频</a>&nbsp;
+                            <a href="https://www.mgtv.com/" target="_blank">芒果TV</a>&nbsp;
+                            <a href="https://www.bilibili.com/" target="_blank">哔哩哔哩</a>&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="firstname"
+                                           placeholder="想看啥网址往这来！！！">
+                                    <a href="#" onclick="HelpClick()">怎么使用？</a>
+                                    <div style="width:20%;float:right"> <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=4b01b57ca828d6690d2566e08f023c3676b5c0ed4551d51328b50195108ca605"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="上海.NET技术交流" title="上海.NET技术交流"></a></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="borders">
+                    <form class="form-horizontal" role="form">
+
+                        <div style="width:60%;">
+                            <button type="button" id="btns" onclick="Playback();" style="float:right" class="btn btn-primary">跳转播放</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>//tip是提示信息，type:'success'是成功信息，'danger'是失败信息,'info'是普通信息
+function ShowTip(tip, type) {
+    var $tip = $('#tip');
+    if ($tip.length == 0) {
+        $tip = $('<span id="tip" style="font-weight:bold;position:absolute;top:50px;left: 50%;z-index:9999"></span>');
+        $('body').append($tip);
+    }
+    $tip.stop(true).attr('class', 'alert alert-' + type).text(tip).css('margin-left', -$tip.outerWidth() / 2).fadeIn(500).delay(2000).fadeOut(500);
+}
+
+function ShowMsg(msg) {
+    ShowTip(msg, 'info');
+}
+
+function ShowSuccess(msg) {
+    ShowTip(msg, 'success');
+}
+
+function ShowFailure(msg) {
+    ShowTip(msg, 'danger');
+}
+
+function ShowWarn(msg, $focus, clear) {
+    ShowTip(msg, 'warning');
+    if ($focus) $focus.focus();
+    if (clear) $focus.val('');
+    return false;
+}</script>
+    <script>
+        function Playback() {
+            var url = $("#firstname").val();
+            if (url != "") {
+                window.open("http://yun.baiyug.cn/vip/?url=" + url);
+            } else {
+                $('#btns').on('click', function () {
+                    ShowFailure("不能留空啊");
+                });
+            }
+        }
+        function HelpClick() {
+            alert("浏览器打开播放器<br>：如（爱奇艺）,选择几级想看的电视,复制浏览器链接粘贴到文本框")
+        }
+    </script>
+</body>
+</html>
